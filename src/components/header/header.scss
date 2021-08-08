@@ -1,0 +1,11 @@
+@import "root.scss";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $black-primary;
+    padding: 1rem 3rem;
+    height: 10vh;
+    width: 100%;
+}
