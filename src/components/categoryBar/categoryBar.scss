@@ -1,0 +1,92 @@
+@import 'root.scss';
+
+// .categoryBar {
+// 	padding: 0.5rem 0;
+// 	font-size: 0.8rem;
+// 	display: flex;
+// 	overflow-x: scroll;
+// 	position: relative;
+
+// 	&::-webkit-scrollbar {
+// 		width: 0;
+// 	}
+
+// 	scrollbar-width: none;
+
+// 	span {
+// 		padding: 0.3rem 0.5rem;
+// 		margin-right: 0.5rem;
+// 		white-space: nowrap;
+// 		border: 1.5px solid $text-color;
+// 		border-radius: 12px;
+// 		background-color: rgba(255, 255, 255, 0.1);
+// 		color: #fff;
+// 		cursor: pointer;
+
+// 		&:hover {
+// 			background-color: rgba(255, 255, 255, 0.2);
+// 		}
+
+// 		&.active {
+// 			background-color: #fff;
+// 			color: #030303;
+// 			border-color: $border-color;
+// 		}
+// 	}
+
+// 	.button {
+// 		position: absolute;
+// 		padding: 0.3rem 0.5rem;
+// 		border: none;
+// 		border-radius: 5px;
+// 		background-color: $black-primary;
+// 		z-index: 999;
+// 		bottom: 0;
+
+// 		&.left {
+// 			left: 0;
+// 			top: 0;
+// 		}
+
+// 		&.right {
+// 			top: 0;
+// 			right: 0;
+// 			bottom: 0;
+// 		}
+
+// 		.iconButton {
+// 			color: white;
+// 		}
+// 	}
+// }
+
+.menu-item {
+	padding: 0.2rem 0.4rem;
+	user-select: none;
+	margin-right: 0.5rem;
+	white-space: nowrap;
+	border: 1.5px solid $text-color;
+	border-radius: 12px;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	cursor: pointer;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+
+	&.active {
+		background-color: #fff;
+		color: #030303;
+		border-color: $border-color;
+	}
+}
+
+.scroll-menu-arrow {
+	padding: 15px;
+	cursor: pointer;
+}
+
+.scroll-menu-arrow--disabled {
+	visibility: hidden;
+}

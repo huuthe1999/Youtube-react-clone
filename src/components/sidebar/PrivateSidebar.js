@@ -5,7 +5,15 @@ import WhatshotIcon from '@material-ui/icons/Whatshot';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import { useDispatch } from 'react-redux';
+import { log_out } from 'redux/actions/auth';
+
 const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
+	const dispatch = useDispatch();
+	const handleLogOut = () => {
+		dispatch(log_out());
+	};
 	return (
 		<nav
 			className={isToggleSidebar ? 'sidebar toggle' : 'sidebar'}
@@ -30,6 +38,12 @@ const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
 				<ThumbUpOutlinedIcon />
 				<span>Liked Videos</span>
 			</li>
+			<hr />
+			<li onClick={handleLogOut}>
+				<ExitToAppOutlinedIcon />
+				<span>Log Out</span>
+			</li>
+			<hr />
 		</nav>
 	);
 };
