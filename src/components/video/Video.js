@@ -4,55 +4,69 @@ import { useEffect, useState } from 'react';
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined';
 import AXIOS from 'configs/api';
 import moment from 'moment';
+import numeral from 'numeral';
 const Video = ({ video }) => {
 	const {
 		id,
-		contentDetails: { duration },
 		snippet: {
 			channelId,
 			channelTitle,
-			description,
 			publishedAt,
 			title,
 			thumbnails: { medium },
 		},
 	} = video;
-	// const [duration, setDuration] = useState(null);
+	const [duration, setDuration] = useState(null);
+	const [countViews, setCountViews] = useState(null);
+	const [iconChannel, setIconChannel] = useState(null);
 	const seconds = moment.duration(duration).asSeconds();
 	const time = moment.utc(seconds * 1000).format('mm:ss');
-	// useEffect(() => {
-	// 	const getDetailVideo = async () => {
-	// 		const res = await AXIOS('/videos', {
-	// 			params: {
-	// 				part: 'contentDetails,statistics',
-	// 				id: id,
-	// 			},
-	// 		});
-	// 		console.log(res);
-	// 	};
-	// 	getDetailVideo();
-	// }, [id]);
+	const videoId = id?.videoId || id;
+
+	useEffect(() => {
+		const getDetailVideo = async () => {
+			const { data } = await AXIOS('/videos', {
+				params: {
+					part: 'contentDetails,statistics',
+					id: videoId,
+				},
+			});
+			setDuration(data.items[0].contentDetails.duration);
+			setCountViews(data.items[0].statistics.viewCount);
+		};
+		getDetailVideo();
+	}, [videoId]);
+
+	useEffect(() => {
+		const getChannelVideo = async () => {
+			const { data } = await AXIOS('/channels', {
+				params: {
+					part: 'snippet,status',
+					id: channelId,
+				},
+			});
+			setIconChannel(data.items[0].snippet.thumbnails.default.url);
+		};
+
+		getChannelVideo();
+	}, [channelId]);
 	return (
 		<div className='video'>
 			<div className='video__top'>
 				<img src={medium.url} alt='' />
 				<span>{time}</span>
 			</div>
-			<div className='video__title'>
-				Create react app by Mr.Siro ft Sky Son Tung
-			</div>
+			<div className='video__title'>{title}</div>
 			<div className='video__detail'>
 				<span>
-					<RemoveRedEyeOutlinedIcon /> 5 views •
+					<RemoveRedEyeOutlinedIcon />
+					{' ' + numeral(countViews).format('0.a')} views
 				</span>
-				<span>5 day ago</span>
+				<span>{' • ' + moment(publishedAt).fromNow()}</span>
 			</div>
 			<div className='video__chanel'>
-				<img
-					src='https://yt3.ggpht.com/mp5KpbkTzi7oBLi7P7HQm0MA8r0y2jaWHcYJn1bpPt_Y9r_PMXVRJ3eSnKyrrKjWkV7IQ-wp=s68-c-k-c0x00ffffff-no-rj'
-					alt=''
-				/>
-				<p>FreeCodeCamp</p>
+				<img src={iconChannel} alt='' />
+				<p>{channelTitle}</p>
 			</div>
 		</div>
 	);

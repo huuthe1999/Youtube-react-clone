@@ -59,6 +59,12 @@
 // 		}
 // 	}
 // }
+.horizontal-menu {
+	position: sticky;
+	top: 10vh;
+	z-index: 999;
+	background-color: $black-primary;
+}
 
 .menu-item {
 	padding: 0.2rem 0.4rem;

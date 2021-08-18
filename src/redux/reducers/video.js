@@ -7,6 +7,7 @@ import {
 const initialState = {
 	videos: [],
 	nextPageToken: null,
+	activeCategory: 'All',
 	loading: false,
 };
 
@@ -21,8 +22,12 @@ export const videoReducer = (state = initialState, action) => {
 		case HOME_VIDEO_SUCCESS: {
 			return {
 				...state,
-				videos: action.payload.videos,
+				videos:
+					state.activeVideo === action.payload.category
+						? [...state.videos, ...action.payload.videos]
+						: action.payload.videos,
 				nextPageToken: action.payload.nextPageToken,
+				activeCategory: action.payload.category,
 				loading: false,
 			};
 		}

@@ -2,27 +2,30 @@ import React, { useState } from 'react';
 import ScrollMenu from 'react-horizontal-scroll-menu';
 // Icon
 import './categoryBar.scss';
+import { useDispatch } from 'react-redux';
+// Actions
+import { getVideosByCategory, getPopularVideos } from 'redux/actions/video';
 const items = [
-	'All',
-	'Football',
-	'Cartoon',
-	'Music',
-	'Live',
-	'Redux',
-	'ReactJs',
-	'Clash of Clan',
-	'JavaScript',
-	'Algorithms',
-	'Comedies',
-	'Highlight films',
-	'Computer files',
-	'Lionel Messi',
-	'Real Madrid CF',
-	'Training',
-	'Traffic',
-	'Redux Toolkit',
-	'NodeJS',
-	'MongoDB',
+	{ name: 'All' },
+	{ name: 'Football' },
+	{ name: 'Cartoon' },
+	{ name: 'Music' },
+	{ name: 'Live' },
+	{ name: 'Redux' },
+	{ name: 'ReactJs' },
+	{ name: 'Clash of Clan' },
+	{ name: 'JavaScript' },
+	{ name: 'Algorithms' },
+	{ name: 'Champion League' },
+	{ name: 'Highlight films' },
+	{ name: 'Computer files' },
+	{ name: 'Comedy' },
+	{ name: 'Real Madrid CF' },
+	{ name: 'Training' },
+	{ name: 'Traffic' },
+	{ name: 'Redux Toolkit' },
+	{ name: 'NodeJS' },
+	{ name: 'MongoDB' },
 ];
 
 const MenuItem = ({ text, selected }) => {
@@ -32,8 +35,9 @@ const MenuItem = ({ text, selected }) => {
 };
 
 const Menu = (list, selected) =>
-	list.map((el, index) => {
-		return <MenuItem text={el} key={index} selected={selected} />;
+	list.map((el) => {
+		const { name } = el;
+		return <MenuItem text={name} key={name} selected={selected} />;
 	});
 
 const Arrow = ({ text, className }) => {
@@ -46,9 +50,17 @@ const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 const CategoryBar = () => {
 	const [activeItem, setActiveItem] = useState('All');
 	const menuItems = Menu(items, activeItem);
+
+	const dispatch = useDispatch();
 	const handleSelected = (key) => {
 		setActiveItem(key);
+		if (key === 'All') {
+			dispatch(getPopularVideos());
+		} else {
+			dispatch(getVideosByCategory(key));
+		}
 	};
+
 	return (
 		<>
 			<ScrollMenu
@@ -63,6 +75,7 @@ const CategoryBar = () => {
 				onSelect={handleSelected}
 				scrollToSelected={false}
 				selected={activeItem}
+				ref={(el) => (el = menuItems)}
 				transition={+0.5}
 				translate={6}
 				wheel={true}
