@@ -22,7 +22,7 @@ const PrivateHeader = ({ handleToggleSidebar }) => {
 	// 		console.log('Not OKE');
 	// 	}
 	// }, [accessToken]);
-
+	const { user } = useSelector((state) => state.auth);
 	return (
 		<div className='header'>
 			<FaBars
@@ -41,7 +41,7 @@ const PrivateHeader = ({ handleToggleSidebar }) => {
 			<div className='header__icons'>
 				<MdNotifications size={28} />
 				<MdApps size={28} />
-				<img src={avatar} alt='Avatar' />
+				<img src={user?.avatar} alt='Avatar' />
 			</div>
 		</div>
 	);

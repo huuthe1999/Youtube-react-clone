@@ -3,7 +3,6 @@ import Header from 'components/header/Header';
 import Sidebar from 'components/sidebar/Sidebar';
 import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import Home from 'pages/home/Home';
 
 const PublicLayout = () => {
 	const [isToggleSidebar, setIsToggleSidebar] = useState(false);

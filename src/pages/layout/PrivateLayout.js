@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import PrivateSidebar from 'components/sidebar/PrivateSidebar';
 import { Container } from 'react-bootstrap';
 import PrivateHeader from 'components/header/PrivateHeader';
-import Search from 'pages/search/Search';
 
 const PrivateLayout = () => {
 	const [isToggleSidebar, setIsToggleSidebar] = useState(false);

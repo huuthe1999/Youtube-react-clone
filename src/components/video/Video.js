@@ -5,6 +5,8 @@ import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined';
 import AXIOS from 'configs/api';
 import moment from 'moment';
 import numeral from 'numeral';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 const Video = ({ video }) => {
 	const {
 		id,
@@ -45,7 +47,7 @@ const Video = ({ video }) => {
 					id: channelId,
 				},
 			});
-			setIconChannel(data.items[0].snippet.thumbnails.default.url);
+			setIconChannel(data.items[0].snippet.thumbnails.default);
 		};
 
 		getChannelVideo();
@@ -53,8 +55,9 @@ const Video = ({ video }) => {
 	return (
 		<div className='video'>
 			<div className='video__top'>
-				<img src={medium.url} alt='' />
-				<span>{time}</span>
+				{/* <img src={medium.url} alt='' /> */}
+				<LazyLoadImage src={medium.url} effect='blur' />
+				<span className='video__top__duration'>{time}</span>
 			</div>
 			<div className='video__title'>{title}</div>
 			<div className='video__detail'>
@@ -65,7 +68,8 @@ const Video = ({ video }) => {
 				<span>{' • ' + moment(publishedAt).fromNow()}</span>
 			</div>
 			<div className='video__chanel'>
-				<img src={iconChannel} alt='' />
+				{/* <img src={iconChannel?.url} alt='' /> */}
+				<LazyLoadImage src={iconChannel?.url} effect='blur' />
 				<p>{channelTitle}</p>
 			</div>
 		</div>

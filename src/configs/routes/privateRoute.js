@@ -3,12 +3,14 @@ import { Navigate } from 'react-router-dom';
 import PrivateLayout from 'pages/layout/PrivateLayout';
 import Search from 'pages/search/Search';
 import Home from 'pages/home/Home';
+import WatchScreen from 'pages/watchScreen/WatchScreen';
 const privateRoutes = [
 	{
 		path: '/',
 		element: <PrivateLayout />,
 		children: [
 			{ path: '/', element: <Home /> },
+			{ path: '/watch/:id', element: <WatchScreen /> },
 			// { path: '/login', element: <LoginView /> },
 			// { path: '/register', element: <RegisterView /> },
 			// { path: '/forgot_password', element: <FogotPassWordView /> },

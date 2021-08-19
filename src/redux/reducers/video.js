@@ -23,7 +23,7 @@ export const videoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				videos:
-					state.activeVideo === action.payload.category
+					state.activeCategory === action.payload.category
 						? [...state.videos, ...action.payload.videos]
 						: action.payload.videos,
 				nextPageToken: action.payload.nextPageToken,

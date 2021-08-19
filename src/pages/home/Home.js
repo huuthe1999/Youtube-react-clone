@@ -5,23 +5,22 @@ import Video from 'components/video/Video';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPopularVideos, getVideosByCategory } from 'redux/actions/video';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Skeleton from 'react-loading-skeleton';
-
+import SkeletonVideo from 'components/skeleton/SkeletonVideo';
 const Home = () => {
 	const dispatch = useDispatch();
-	const { videos, activeVideo, loading } = useSelector(
+	const { videos, activeCategory, loading } = useSelector(
 		(state) => state.homeVideos,
 	);
 
-	useEffect(() => {
-		dispatch(getPopularVideos());
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch(getPopularVideos());
+	// }, [dispatch]);
 
 	const fetchData = () => {
-		if (activeVideo === 'All') {
+		if (activeCategory === 'All') {
 			dispatch(getPopularVideos());
 		} else {
-			dispatch(getVideosByCategory(activeVideo));
+			dispatch(getVideosByCategory(activeCategory));
 		}
 	};
 	return (
@@ -30,7 +29,7 @@ const Home = () => {
 			<Row>
 				<InfiniteScroll
 					dataLength={videos.length}
-					next={fetchData}
+					// next={fetchData}
 					hasMore={true}
 					loader={
 						<div className='spinner-border text-danger d-block mx-auto'></div>
@@ -44,7 +43,7 @@ const Home = () => {
 						  ))
 						: [...Array(20)].map((video, index) => (
 								<Col lg={3} md={4} key={index}>
-									<Skeleton height={180} width='100%' />
+									<SkeletonVideo />
 								</Col>
 						  ))}
 				</InfiniteScroll>

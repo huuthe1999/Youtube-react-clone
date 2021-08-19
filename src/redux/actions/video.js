@@ -13,7 +13,7 @@ export const getPopularVideos = () => async (dispatch, getState) => {
 				part: 'snippet,contentDetails,statistics',
 				chart: 'mostPopular',
 				regionCode: 'VN',
-				maxResults: 20,
+				maxResults: 10,
 				pageToken: getState().homeVideos.nextPageToken,
 			},
 		});
@@ -36,7 +36,7 @@ export const getVideosByCategory = (text) => async (dispatch, getState) => {
 		const { data } = await AXIOS('/search', {
 			params: {
 				part: 'snippet',
-				maxResults: 20,
+				maxResults: 10,
 				pageToken: getState().homeVideos.nextPageToken,
 				q: text,
 				type: 'video',
