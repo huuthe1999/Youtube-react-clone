@@ -1,0 +1,44 @@
+@import 'root.scss';
+.commentLayout {
+	$this: &;
+	&__form {
+		img {
+			width: 50px;
+			height: 50px;
+			object-fit: cover;
+		}
+		input {
+			background: transparent;
+			border: none;
+			outline: none;
+			color: white;
+			border-bottom: 1px solid $text-color;
+			&:focus + #{$this}__buttons {
+				display: flex;
+				justify-content: flex-end;
+			}
+			&:focus {
+				border-bottom: 1px solid white;
+			}
+		}
+		.commentLayout__buttons {
+			transition: display 1s ease-out;
+			display: none;
+			margin: 10px 0;
+			button {
+				color: $text-color;
+			}
+			&__cancel {
+				background: transparent;
+			}
+
+			&__comment {
+				background-color: #727272;
+			}
+		}
+	}
+
+	&__buttons {
+		// display: none;
+	}
+}

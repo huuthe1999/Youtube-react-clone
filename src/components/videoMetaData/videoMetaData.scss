@@ -1,0 +1,58 @@
+@import 'root.scss';
+
+.videoMetaData {
+	&__title {
+		h5 {
+			color: white;
+		}
+	}
+	&__info {
+		span {
+			cursor: pointer;
+			color: white;
+		}
+	}
+
+	&__channel {
+		border-top: 1px solid $border-color;
+		border-bottom: 1px solid $border-color;
+		img {
+			width: 50px;
+			height: 50px;
+		}
+		button {
+			background-color: red;
+			color: white;
+			letter-spacing: 0.5px;
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+		span:first-of-type {
+			color: white;
+		}
+	}
+
+	&__description {
+		font-size: 0.9rem;
+		margin-left: 66px;
+		white-space: pre-line;
+		color: white;
+
+		.showMoreText {
+			text-decoration: none;
+			text-transform: uppercase;
+			display: block;
+			margin: 1rem 0;
+			color: $text-color;
+			font-weight: 500;
+		}
+	}
+
+	&__hr {
+		color: #ddd;
+		background-color: #ddd;
+		height: 1px;
+		border: none;
+		max-width: 100%;
+	}
+}
