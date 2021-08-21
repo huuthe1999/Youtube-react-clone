@@ -2,6 +2,9 @@ import {
 	HOME_VIDEO_REQUEST,
 	HOME_VIDEO_SUCCESS,
 	HOME_VIDEO_FAILED,
+	SELECT_VIDEO_REQUEST,
+	SELECT_VIDEO_SUCCESS,
+	SELECT_VIDEO_FAILED,
 } from '../actionType';
 import AXIOS from 'configs/api';
 
@@ -52,5 +55,17 @@ export const getVideosByCategory = (text) => async (dispatch, getState) => {
 		});
 	} catch (error) {
 		dispatch({ type: HOME_VIDEO_FAILED, payload: error.message });
+	}
+};
+
+export const getVideoById = (id) => async (dispatch) => {
+	try {
+		dispatch({ type: SELECT_VIDEO_REQUEST });
+		const { data } = await AXIOS('/videos', {
+			params: { part: 'snippet,statistics', id: id },
+		});
+		dispatch({ type: SELECT_VIDEO_SUCCESS, payload: data.items[0] });
+	} catch (error) {
+		dispatch({ type: SELECT_VIDEO_FAILED, payload: error.message });
 	}
 };

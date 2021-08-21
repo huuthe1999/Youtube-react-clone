@@ -16,13 +16,22 @@
 			&:focus + #{$this}__buttons {
 				display: flex;
 				justify-content: flex-end;
+				@keyframes fadeIn {
+					from {
+						opacity: 0;
+					}
+					to {
+						opacity: 1;
+					}
+				}
+				animation: fadeIn 1s;
 			}
+
 			&:focus {
 				border-bottom: 1px solid white;
 			}
 		}
 		.commentLayout__buttons {
-			transition: display 1s ease-out;
 			display: none;
 			margin: 10px 0;
 			button {

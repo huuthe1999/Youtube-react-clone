@@ -7,9 +7,8 @@ const Comment = () => {
 		<div className='comment py-2 d-flex'>
 			<img src={avatar} alt='avatar' className='rounded-circle me-3' />
 			<div className='comment__body'>
-				<p className='comment__header'>
-					Clash Of Clan {' • ' + moment('2021-03-17').fromNow()}
-				</p>
+				<span className='comment__header'>Clash Of Clan</span>
+				<span> {' • ' + moment('2021-03-17').fromNow()}</span>
 				<p>
 					Happy Debugging! Let me know your thoughts on this project.
 				</p>

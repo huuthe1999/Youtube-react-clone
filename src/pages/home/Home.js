@@ -35,7 +35,7 @@ const Home = () => {
 						<div className='spinner-border text-danger d-block mx-auto'></div>
 					}
 					className='row'>
-					{loading
+					{!loading
 						? videos.map((video, index) => (
 								<Col lg={3} md={4} key={index}>
 									<Video video={video} />

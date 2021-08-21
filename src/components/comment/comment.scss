@@ -1,7 +1,18 @@
+@import 'root.scss';
 .comment {
-	width: 100%;
+	font-size: 0.9rem;
+	border-bottom: 1px solid $text-color;
 	img {
 		width: 50px;
 		height: 50px;
+	}
+	&__body {
+		color: #fff;
+		span:nth-of-type(2) {
+			color: $text-color;
+		}
+		p {
+			margin-top: 0.5rem;
+		}
 	}
 }
