@@ -5,6 +5,9 @@ import {
 	SELECT_VIDEO_REQUEST,
 	SELECT_VIDEO_SUCCESS,
 	SELECT_VIDEO_FAILED,
+	RELATED_VIDEO_REQUEST,
+	RELATED_VIDEO_SUCCESS,
+	RELATED_VIDEO_FAILED,
 } from '../actionType';
 import AXIOS from 'configs/api';
 
@@ -67,5 +70,25 @@ export const getVideoById = (id) => async (dispatch) => {
 		dispatch({ type: SELECT_VIDEO_SUCCESS, payload: data.items[0] });
 	} catch (error) {
 		dispatch({ type: SELECT_VIDEO_FAILED, payload: error.message });
+	}
+};
+
+export const getRelatedVideos = (id) => async (dispatch) => {
+	try {
+		dispatch({ type: RELATED_VIDEO_REQUEST });
+		const { data } = await AXIOS('/search', {
+			params: {
+				part: 'snippet',
+				relatedToVideoId: id,
+				maxResults: 10,
+				type: 'video',
+			},
+		});
+		dispatch({ type: RELATED_VIDEO_SUCCESS, payload: data.items });
+	} catch (error) {
+		dispatch({
+			type: RELATED_VIDEO_FAILED,
+			payload: error.response.data.message,
+		});
 	}
 };

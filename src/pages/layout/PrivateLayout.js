@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import PrivateSidebar from 'components/sidebar/PrivateSidebar';
 import { Container } from 'react-bootstrap';
@@ -9,6 +9,7 @@ const PrivateLayout = () => {
 	const handleToggleSidebar = () => {
 		setIsToggleSidebar(!isToggleSidebar);
 	};
+
 	return (
 		<>
 			<PrivateHeader handleToggleSidebar={handleToggleSidebar} />

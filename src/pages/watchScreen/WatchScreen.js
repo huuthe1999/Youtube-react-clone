@@ -6,14 +6,18 @@ import VideoHorizontal from 'components/videoHorizontal/VideoHorizontal';
 import CommentLayout from 'components/commentLayout/CommentLayout';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideoById } from 'redux/actions/video';
+import { getVideoById, getRelatedVideos } from 'redux/actions/video';
 
 const WatchScreen = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const { video, loading } = useSelector((state) => state.selectedVideo);
+	const { videos, loadding: relatedVideosLoading } = useSelector(
+		(state) => state.relatedVideos,
+	);
 	useEffect(() => {
 		dispatch(getVideoById(id));
+		dispatch(getRelatedVideos(id));
 	}, [dispatch, id]);
 	return (
 		<Row>
@@ -33,12 +37,21 @@ const WatchScreen = () => {
 					<VideoMetaData video={video} videoId={id} />
 				)}
 
-				<CommentLayout />
+				<CommentLayout
+					videoId={id}
+					commentCount={video?.statistics?.commentCount}
+				/>
 			</Col>
 			<Col lg={4}>
-				{[...Array(10)].map((_, id) => (
-					<VideoHorizontal key={id} />
-				))}
+				{!relatedVideosLoading &&
+					videos
+						?.filter((video) => video.snippet)
+						.map((video) => (
+							<VideoHorizontal
+								video={video}
+								key={video.id.videoId}
+							/>
+						))}
 			</Col>
 		</Row>
 	);

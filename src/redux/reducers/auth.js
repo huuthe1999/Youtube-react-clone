@@ -10,7 +10,9 @@ const initialState = {
 	accessToken: sessionStorage.getItem('accessToken')
 		? sessionStorage.getItem('accessToken')
 		: null,
-	user: null,
+	user: sessionStorage.getItem('userProfile')
+		? JSON.parse(sessionStorage.getItem('userProfile'))
+		: null,
 	loading: false,
 	isLoggedIn: false,
 	error: null,
@@ -34,6 +36,7 @@ export const authReducer = (prevState = initialState, action) => {
 				...prevState,
 				accessToken: null,
 				loading: false,
+				isLoggedIn: false,
 				error: action.payload,
 			};
 		case LOAD_PROFILE:
@@ -41,12 +44,14 @@ export const authReducer = (prevState = initialState, action) => {
 				...prevState,
 				user: action.payload,
 				loading: false,
+				isLoggedIn: true,
 			};
 		case LOG_OUT:
 			return {
 				...prevState,
 				accessToken: null,
 				user: null,
+				isLoggedIn: false,
 			};
 		default:
 			return prevState;

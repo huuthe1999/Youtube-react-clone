@@ -1,6 +1,5 @@
 @import 'root.scss';
 .commentLayout {
-	$this: &;
 	&__form {
 		img {
 			width: 50px;
@@ -13,19 +12,6 @@
 			outline: none;
 			color: white;
 			border-bottom: 1px solid $text-color;
-			&:focus + #{$this}__buttons {
-				display: flex;
-				justify-content: flex-end;
-				@keyframes fadeIn {
-					from {
-						opacity: 0;
-					}
-					to {
-						opacity: 1;
-					}
-				}
-				animation: fadeIn 1s;
-			}
 
 			&:focus {
 				border-bottom: 1px solid white;
@@ -34,6 +20,16 @@
 		.commentLayout__buttons {
 			display: none;
 			margin: 10px 0;
+			justify-content: flex-end;
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+			animation: fadeIn 1s;
 			button {
 				color: $text-color;
 			}
@@ -43,11 +39,25 @@
 
 			&__comment {
 				background-color: #727272;
+				&.active {
+					color: black;
+					background-color: #3ea6ff;
+				}
 			}
 		}
 	}
+}
 
-	&__buttons {
-		// display: none;
+.blurButtons {
+	display: flex;
+	justify-content: flex-end;
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
+	animation: fadeIn 1s;
 }

@@ -25,6 +25,7 @@ export const login = () => async (dispatch) => {
 		};
 
 		sessionStorage.setItem('accessToken', accessToken);
+		sessionStorage.setItem('userProfile', JSON.stringify(profile));
 		dispatch({ type: LOGIN_SUCCESS, payload: accessToken });
 
 		dispatch({ type: LOAD_PROFILE, payload: profile });

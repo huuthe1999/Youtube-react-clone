@@ -1,16 +1,18 @@
 @import 'root.scss';
 
 .videoHorizontal {
-	font-weight: 500;
-	font-size: 0.9rem;
+	// font-weight: 500;
+	// font-size: 0.9rem;
 	cursor: pointer;
 	border-bottom: 1px solid $border-color;
+
 	&__left {
 		text-align: center;
 		position: relative;
 	}
 	&__thumbnail {
 		width: 100%;
+
 		&-wrapper {
 			width: 100%;
 		}
@@ -18,23 +20,24 @@
 
 	&__duration {
 		position: absolute;
-		bottom: 5px;
-		right: 5px;
+		bottom: 0.2rem;
+		right: 1rem;
+		font-size: 0.6rem;
 		background-color: $black-primary;
 		color: #fff;
-		padding: 2px;
+		padding: 0.2rem;
 		border-radius: 3px;
 	}
 
 	&__title {
-		font-size: 1rem;
+		font-size: 0.8rem;
 		color: #fff;
 		letter-spacing: 0.1px;
 		@include line-clamp(2);
 	}
 
 	&__details {
-		font-size: 0.9rem;
+		font-size: 0.7rem;
 	}
 	&__channel {
 		img {
@@ -47,7 +50,7 @@
 		}
 
 		p {
-			font-size: 0.9rem;
+			font-size: 0.7rem;
 			margin-bottom: 0px;
 			@include line-clamp(1);
 		}

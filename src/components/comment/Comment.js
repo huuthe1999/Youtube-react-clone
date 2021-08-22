@@ -1,17 +1,31 @@
 import React from 'react';
 import './comment.scss';
-import avatar from 'assets/images/avatar.png';
 import moment from 'moment';
-const Comment = () => {
+const Comment = ({ comment }) => {
+	const {
+		textDisplay,
+		authorDisplayName,
+		authorProfileImageUrl,
+		publishedAt,
+		updatedAt,
+	} = comment;
 	return (
 		<div className='comment py-2 d-flex'>
-			<img src={avatar} alt='avatar' className='rounded-circle me-3' />
+			<img
+				src={authorProfileImageUrl}
+				alt='avatar'
+				className='rounded-circle me-3'
+			/>
 			<div className='comment__body'>
-				<span className='comment__header'>Clash Of Clan</span>
-				<span> {' • ' + moment('2021-03-17').fromNow()}</span>
-				<p>
-					Happy Debugging! Let me know your thoughts on this project.
-				</p>
+				<span className='comment__header'>{authorDisplayName}</span>
+				<span>
+					{' '}
+					{' • '}
+					{updatedAt !== publishedAt
+						? `${moment().fromNow(updatedAt)} (edited)`
+						: moment().fromNow(publishedAt)}
+				</span>
+				<p dangerouslySetInnerHTML={{ __html: textDisplay }} />
 			</div>
 		</div>
 	);

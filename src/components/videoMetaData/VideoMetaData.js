@@ -14,33 +14,7 @@ import {
 	checkSubscriptionChannel,
 } from 'redux/actions/channel';
 // Popover
-import { OverlayTrigger, Popover } from 'react-bootstrap';
-
-const popover = (
-	<Popover id='popover-positioned-top-start'>
-		<Popover.Title
-			as='h6'
-			style={{
-				backgroundColor: '#16181b',
-				fontSize: '16px',
-				padding: '0.5rem 0.5rem',
-			}}>
-			Want to subscribe to this channel?
-		</Popover.Title>
-		<Popover.Content
-			style={{
-				color: '#b1bdb4',
-				fontSize: '15px',
-				padding: '0.5rem 0.5rem',
-				backgroundColor: '#16181b',
-			}}>
-			<p>Sign in to subscribe to this channel.</p>
-			<div className='videoMetaData__login-button'>
-				<button>Sign In</button>
-			</div>
-		</Popover.Content>
-	</Popover>
-);
+import PopOver from 'components/popover/PopOver';
 
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 	const dispatch = useDispatch();
@@ -53,8 +27,10 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 	const { viewCount, likeCount, dislikeCount, commentCount } = statistics;
 	useEffect(() => {
 		dispatch(getChannelDetails(channelId));
-		dispatch(checkSubscriptionChannel(channelId));
-	}, [dispatch, channelId]);
+		if (accessToken) {
+			dispatch(checkSubscriptionChannel(channelId));
+		}
+	}, [dispatch, channelId, accessToken]);
 	return (
 		<div className='videoMetaData py-2'>
 			<div className='videoMetaData__title'>
@@ -98,15 +74,11 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 					</div>{' '}
 				</div>
 				{!accessToken ? (
-					<OverlayTrigger
-						rootClose
-						trigger='click'
-						placement='top-start'
-						overlay={popover}>
+					<PopOver>
 						<button className='rounded border-0 p-2 m-2'>
 							SUBSCRIBE
 						</button>
-					</OverlayTrigger>
+					</PopOver>
 				) : isSubscribed ? (
 					<button className='button-subscribed rounded border-0 p-2 m-2'>
 						SUBSCRIBED
