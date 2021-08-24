@@ -6,8 +6,10 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import { useDispatch } from 'react-redux';
 import { log_out } from 'redux/actions/auth';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
 	const dispatch = useDispatch();
@@ -18,26 +20,39 @@ const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
 		<nav
 			className={isToggleSidebar ? 'sidebar toggle' : 'sidebar'}
 			onClick={() => handleToggleSidebar(false)}>
-			<li>
-				<HomeOutlinedIcon />
-				<span>Home</span>
-			</li>
+			<NavLink end to='/' activeClassName='activeLink'>
+				<li>
+					<HomeOutlinedIcon />
+					<span>Home</span>
+				</li>
+			</NavLink>
 			<li>
 				<WhatshotIcon />
 				<span>Trending</span>
 			</li>
-			<li>
-				<SubscriptionsOutlinedIcon />
-				<span>Subscription</span>
-			</li>
-			<li>
-				<VideoLibraryOutlinedIcon />
-				<span>Library</span>
-			</li>
+			<NavLink to='/feed/subscriptions' activeClassName='activeLink'>
+				<li>
+					<SubscriptionsOutlinedIcon />
+					<span>Subscription</span>
+				</li>
+			</NavLink>
 			<li>
 				<ThumbUpOutlinedIcon />
 				<span>Liked Videos</span>
 			</li>
+			<hr />
+			<NavLink to='/feed/library' activeClassName='activeLink'>
+				<li>
+					<VideoLibraryOutlinedIcon />
+					<span>Library</span>
+				</li>
+			</NavLink>
+			<NavLink to='/feed/history' activeClassName='activeLink'>
+				<li>
+					<HistoryOutlinedIcon />
+					<span>History</span>
+				</li>
+			</NavLink>
 			<hr />
 			<li onClick={handleLogOut}>
 				<ExitToAppOutlinedIcon />

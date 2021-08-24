@@ -4,6 +4,11 @@ import PrivateLayout from 'pages/layout/PrivateLayout';
 import Search from 'pages/search/Search';
 import Home from 'pages/home/Home';
 import WatchScreen from 'pages/watchScreen/WatchScreen';
+import Subscription from 'pages/subscription/Subscription';
+import Library from 'pages/library/Library';
+import History from 'pages/history/History';
+import Channel from 'pages/channel/Channel';
+import NotFound from 'pages/notFound/NotFound';
 const privateRoutes = [
 	{
 		path: '/',
@@ -11,6 +16,13 @@ const privateRoutes = [
 		children: [
 			{ path: '/', element: <Home /> },
 			{ path: '/watch/:id', element: <WatchScreen /> },
+			{ path: '/search/:query', element: <Search /> },
+			{ path: '/feed/subscriptions', element: <Subscription /> },
+			{ path: '/feed/library', element: <Library /> },
+			{ path: '/feed/history', element: <History /> },
+			{ path: '/channel/:channelId', element: <Channel /> },
+			{ path: '/404', element: <NotFound /> },
+			{ path: '*', element: <Navigate to='/404' /> },
 			// { path: '/login', element: <LoginView /> },
 			// { path: '/register', element: <RegisterView /> },
 			// { path: '/forgot_password', element: <FogotPassWordView /> },

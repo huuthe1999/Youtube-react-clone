@@ -3,6 +3,12 @@ import { Navigate } from 'react-router-dom';
 import PublicLayout from 'pages/layout/PublicLayout';
 import Home from 'pages/home/Home';
 import WatchScreen from 'pages/watchScreen/WatchScreen';
+import Search from 'pages/search/Search';
+import Subscription from 'pages/UnAuthenticated/subscription/Subscription';
+import Library from 'pages/UnAuthenticated/library/Library';
+import History from 'pages/UnAuthenticated/history/History';
+import Channel from 'pages/channel/Channel';
+import NotFound from 'pages/notFound/NotFound';
 const publicRoutes = [
 	{
 		path: '/',
@@ -10,6 +16,13 @@ const publicRoutes = [
 		children: [
 			{ path: '/', element: <Home /> },
 			{ path: '/watch/:id', element: <WatchScreen /> },
+			{ path: '/search/:query', element: <Search /> },
+			{ path: '/feed/subscriptions', element: <Subscription /> },
+			{ path: '/feed/library', element: <Library /> },
+			{ path: '/feed/history', element: <History /> },
+			{ path: '/channel/:channelId', element: <Channel /> },
+			{ path: '/404', element: <NotFound /> },
+			{ path: '*', element: <Navigate to='/404' /> },
 			// { path: '/register', element: <RegisterView /> },
 			// { path: '/forgot_password', element: <FogotPassWordView /> },
 			// { path: "/active/:token", element: <ActiveAccountView /> },

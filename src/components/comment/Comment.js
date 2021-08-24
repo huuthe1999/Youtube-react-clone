@@ -22,8 +22,8 @@ const Comment = ({ comment }) => {
 					{' '}
 					{' • '}
 					{updatedAt !== publishedAt
-						? `${moment().fromNow(updatedAt)} (edited)`
-						: moment().fromNow(publishedAt)}
+						? `${moment(updatedAt).fromNow()} (edited)`
+						: moment(publishedAt).fromNow()}
 				</span>
 				<p dangerouslySetInnerHTML={{ __html: textDisplay }} />
 			</div>

@@ -1,5 +1,5 @@
 import './header.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // Actions
 import { login } from 'redux/actions/auth';
@@ -9,19 +9,19 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { MdNotifications, MdApps } from 'react-icons/md';
 // Image
 import logo from 'assets/images/logo.png';
-import avatar from 'assets/images/avatar.png';
+import { useNavigate } from 'react-router-dom';
 
 const PrivateHeader = ({ handleToggleSidebar }) => {
-	// const dispatch = useDispatch();
-	// const { accessToken } = useSelector((state) => state.auth);
+	const navigate = useNavigate();
+	const [text, setText] = useState('');
 
-	// useEffect(() => {
-	// 	if (accessToken) {
-	// 		console.log('OKE');
-	// 	} else {
-	// 		console.log('Not OKE');
-	// 	}
-	// }, [accessToken]);
+	const handleChange = (e) => {
+		setText(e.target.value);
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		navigate(`/search/${text}`);
+	};
 	const { user } = useSelector((state) => state.auth);
 	return (
 		<div className='header'>
@@ -31,8 +31,12 @@ const PrivateHeader = ({ handleToggleSidebar }) => {
 				onClick={() => handleToggleSidebar()}
 			/>
 			<img src={logo} alt='' className='header__logo' />
-			<form action=''>
-				<input type='text' placeholder='Search' />
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					placeholder='Search'
+					onChange={handleChange}
+				/>
 				<button type='submit'>
 					<AiOutlineSearch size={22} />
 				</button>

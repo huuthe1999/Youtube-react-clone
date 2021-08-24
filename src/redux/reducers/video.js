@@ -8,6 +8,15 @@ import {
 	RELATED_VIDEO_REQUEST,
 	RELATED_VIDEO_SUCCESS,
 	RELATED_VIDEO_FAILED,
+	SEARCH_VIDEO_REQUEST,
+	SEARCH_VIDEO_SUCCESS,
+	SEARCH_VIDEO_FAILED,
+	SUBSCRIPTION_CHANNEL_REQUEST,
+	SUBSCRIPTION_CHANNEL_SUCCESS,
+	SUBSCRIPTION_CHANNEL_FAILED,
+	VIDEO_CHANNEL_REQUEST,
+	VIDEO_CHANNEL_SUCCESS,
+	VIDEO_CHANNEL_FAILED,
 } from '../actionType';
 
 const initialState = {
@@ -978,6 +987,266 @@ export const relatedVideoReducer = (
 			};
 		}
 		case RELATED_VIDEO_FAILED: {
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+		}
+		default:
+			return state;
+	}
+};
+
+export const searchVideoReducer = (
+	state = {
+		loading: true,
+		videos: [],
+	},
+	action,
+) => {
+	switch (action.type) {
+		case SEARCH_VIDEO_REQUEST: {
+			return {
+				...state,
+				loading: true,
+			};
+		}
+		case SEARCH_VIDEO_SUCCESS: {
+			return {
+				...state,
+				videos: action.payload,
+				loading: false,
+			};
+		}
+		case SEARCH_VIDEO_FAILED: {
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+		}
+		default:
+			return state;
+	}
+};
+
+export const subscriptionChannelReducer = (
+	state = {
+		loading: true,
+		videos: [
+			{
+				kind: 'youtube#subscription',
+				etag: 'T5BpPfAU5ec32JBB0Cq5aB2D2PQ',
+				id: '9hdUHxMSPqbfB75f3yDnpZEC57yhJiFOBxKsNRxaNnA',
+				snippet: {
+					publishedAt: '2021-07-30T09:43:55.180564Z',
+					title: 'Backbench Coder',
+					description:
+						"I don't have time to write a description about my channel, as I am still debugging the project I started in my 1st year of college.\nCheck out the home page to .....ohhhh! sorry bro , I think I found the bug, see you on Monday .\nLong Story Short, We Code 😪",
+					resourceId: {
+						kind: 'youtube#channel',
+						channelId: 'UClW8d1f5m0QAE_Ig024EP6A',
+					},
+					channelId: 'UCducnioyVqpGEgz-sEAd6Sw',
+					thumbnails: {
+						default: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLSQnPeUQ9rFmkq9oOvnO--vHir9MuJ1SBWWJFx-=s88-c-k-c0x00ffffff-no-rj',
+						},
+						medium: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLSQnPeUQ9rFmkq9oOvnO--vHir9MuJ1SBWWJFx-=s240-c-k-c0x00ffffff-no-rj',
+						},
+						high: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLSQnPeUQ9rFmkq9oOvnO--vHir9MuJ1SBWWJFx-=s800-c-k-c0x00ffffff-no-rj',
+						},
+					},
+				},
+				contentDetails: {
+					totalItemCount: 99,
+					newItemCount: 0,
+					activityType: 'all',
+				},
+			},
+			{
+				kind: 'youtube#subscription',
+				etag: 'jRnZjfoBCPugVXGNWM-W72ikM84',
+				id: '9hdUHxMSPqaLpfUnLbGB6Od7rfL4l1cLy_AI-QLjlE4',
+				snippet: {
+					publishedAt: '2021-06-17T13:59:51.619973Z',
+					title: 'Thuy Nga',
+					description:
+						"Thuy Nga Paris By Night Official Site\nThuy Nga is the number one recording company, providing state-of-the art music videos performed by the top Vietnamese artists. The company has been producing\nmusic and concerts under the Thuy Nga and Paris by Night tradenames since the early 1980's.\nVisit us at https://www.thuynga.com\n\nFOLLOW THUY NGA PARIS BY NIGHT:\n☞ Facebook: https://www.facebook.com/ThuyNgaPBN/\n☞ Instagram: https://www.instagram.com/thuynga_official/\n☞ Thuy Nga Youtube: http://channel.thuynga.online/ThuyNgaParisByNight\n☞ Hài Official: http://channel.thuynga.online/haiofficial \n☞ Thuy Nga Karaoke: http://channel.thuynga.online/ThuyNgaKaraoke\n☞ Thuy nga Radio: http://channel.thuynga.online/ThuyNgaRadio\n☞ MC Nguyễn Ngọc Ngạn Youtube: http://channel.thuynga.online/NguyenNgocNganOfficial\n☞ Website: http://www.thuyngashop.com\n☞ Website mua hàng tại Việt Nam: http://www.thuynga.online",
+					resourceId: {
+						kind: 'youtube#channel',
+						channelId: 'UC7nMrW3baKp0dA5Tz9ulVYQ',
+					},
+					channelId: 'UCducnioyVqpGEgz-sEAd6Sw',
+					thumbnails: {
+						default: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRAQiqaCWFi_vS2U0SeXlVhrJKJ0SsFcVCXeYMY=s88-c-k-c0x00ffffff-no-rj',
+						},
+						medium: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRAQiqaCWFi_vS2U0SeXlVhrJKJ0SsFcVCXeYMY=s240-c-k-c0x00ffffff-no-rj',
+						},
+						high: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRAQiqaCWFi_vS2U0SeXlVhrJKJ0SsFcVCXeYMY=s800-c-k-c0x00ffffff-no-rj',
+						},
+					},
+				},
+				contentDetails: {
+					totalItemCount: 3318,
+					newItemCount: 1,
+					activityType: 'all',
+				},
+			},
+			{
+				kind: 'youtube#subscription',
+				etag: 'tP6MX7pNa1H1cO-CLUR0b9BrS7s',
+				id: '9hdUHxMSPqbpTf97YbQ_My2_RDQuQqo8UoOAVzEsIU4',
+				snippet: {
+					publishedAt: '2019-10-03T12:21:59.229059Z',
+					title: 'Cảm Bóng Đá',
+					description:
+						'Cập nhật những thông tin bóng đá mới nhất, những video phân tích, Show bóng đá hay trên kênh Youtube chính thức của CẢM BÓNG ĐÁ.\n\n👉Ủng hộ bọn mình tại:\nhttps://playerduo.com/cambongda\nhttps://vrdonate.vn/cambongda\n.............\n📣 Đừng quên Subscribe Cảm trên những kênh khác qua:\nhttps://fafc.me/Cambongda\n----\nLiên hệ quảng cáo:\n►Email: cambongda@gmail.com\n►ĐT: 097.1451.723',
+					resourceId: {
+						kind: 'youtube#channel',
+						channelId: 'UCtowbSVJlDLjgs-5qsznSTA',
+					},
+					channelId: 'UCducnioyVqpGEgz-sEAd6Sw',
+					thumbnails: {
+						default: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLTdZ08iRneywEBz052YrEcr_Y2TpPheiHc-clX_=s88-c-k-c0x00ffffff-no-rj',
+						},
+						medium: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLTdZ08iRneywEBz052YrEcr_Y2TpPheiHc-clX_=s240-c-k-c0x00ffffff-no-rj',
+						},
+						high: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLTdZ08iRneywEBz052YrEcr_Y2TpPheiHc-clX_=s800-c-k-c0x00ffffff-no-rj',
+						},
+					},
+				},
+				contentDetails: {
+					totalItemCount: 2857,
+					newItemCount: 1,
+					activityType: 'all',
+				},
+			},
+			{
+				kind: 'youtube#subscription',
+				etag: 'jDfjBnsXoVDq2f0pieoyHPH-_Pw',
+				id: '9hdUHxMSPqbfB75f3yDnpaJdPw0IechRz3g-rlxp4h4',
+				snippet: {
+					publishedAt: '2021-04-14T08:36:43.434856Z',
+					title: 'Lama Dev',
+					description:
+						'Web development tutorials for everyone. Learn JavaScript, React.js, Node.js, and find inspiration for HTML, CSS, and web design with Lama and become a web developer.\n\nSocial Media:\nFacebook: https://www.facebook.com/groups/lamadev\nInstagram: https://www.instagram.com/lamawebdev\nDiscord: https://discord.gg/yKremu4mPr\nTwitter: https://twitter.com/lamaWebDev\n\nContact:\ncontact@lama.dev',
+					resourceId: {
+						kind: 'youtube#channel',
+						channelId: 'UCOxWrX5MIdXIeRNaXC3sqIg',
+					},
+					channelId: 'UCducnioyVqpGEgz-sEAd6Sw',
+					thumbnails: {
+						default: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLR-TP_Uc-gh9UWENj1CsWNVyxDRwCikaVARVwhY=s88-c-k-c0x00ffffff-no-rj',
+						},
+						medium: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLR-TP_Uc-gh9UWENj1CsWNVyxDRwCikaVARVwhY=s240-c-k-c0x00ffffff-no-rj',
+						},
+						high: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLR-TP_Uc-gh9UWENj1CsWNVyxDRwCikaVARVwhY=s800-c-k-c0x00ffffff-no-rj',
+						},
+					},
+				},
+				contentDetails: {
+					totalItemCount: 23,
+					newItemCount: 1,
+					activityType: 'all',
+				},
+			},
+			{
+				kind: 'youtube#subscription',
+				etag: 'org7GIrnGDXSIbeTKc7aftewk3E',
+				id: '9hdUHxMSPqbfB75f3yDnpR4Iz6qww7xHN6mUtRRFmdE',
+				snippet: {
+					publishedAt: '2020-11-29T10:37:16.553353Z',
+					title: 'Bedimcode',
+					description:
+						"Hi, I am a freelance web developer passionate about creating and designing beautiful desktop and mobile web interfaces developed in HTML CSS & JavaScript.  It's a pleasure to have you here. SUBSCRIBE, and see you in a next video.",
+					resourceId: {
+						kind: 'youtube#channel',
+						channelId: 'UCgkDs77BoEhMIgRUB4MKrtQ',
+					},
+					channelId: 'UCducnioyVqpGEgz-sEAd6Sw',
+					thumbnails: {
+						default: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRezmgExu34nzZO8ZP81FQ--l38oD1ri4D_FfYS=s88-c-k-c0x00ffffff-no-rj',
+						},
+						medium: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRezmgExu34nzZO8ZP81FQ--l38oD1ri4D_FfYS=s240-c-k-c0x00ffffff-no-rj',
+						},
+						high: {
+							url: 'https://yt3.ggpht.com/ytc/AKedOLRezmgExu34nzZO8ZP81FQ--l38oD1ri4D_FfYS=s800-c-k-c0x00ffffff-no-rj',
+						},
+					},
+				},
+				contentDetails: {
+					totalItemCount: 40,
+					newItemCount: 0,
+					activityType: 'all',
+				},
+			},
+		],
+	},
+	action,
+) => {
+	switch (action.type) {
+		case SUBSCRIPTION_CHANNEL_REQUEST: {
+			return {
+				...state,
+				loading: true,
+			};
+		}
+		case SUBSCRIPTION_CHANNEL_SUCCESS: {
+			return {
+				...state,
+				videos: action.payload,
+				loading: false,
+			};
+		}
+		case SUBSCRIPTION_CHANNEL_FAILED: {
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+		}
+		default:
+			return state;
+	}
+};
+
+export const channelVideosReducer = (
+	state = {
+		loading: true,
+		videos: [],
+	},
+	action,
+) => {
+	switch (action.type) {
+		case VIDEO_CHANNEL_REQUEST: {
+			return {
+				...state,
+				loading: true,
+			};
+		}
+		case VIDEO_CHANNEL_SUCCESS: {
+			return {
+				...state,
+				videos: action.payload,
+				loading: false,
+			};
+		}
+		case VIDEO_CHANNEL_FAILED: {
 			return {
 				...state,
 				loading: false,

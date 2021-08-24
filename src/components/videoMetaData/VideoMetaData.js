@@ -24,7 +24,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 		useSelector((state) => state.channelDetails.channel);
 	const { publishedAt, channelId, channelTitle, description, title } =
 		snippet;
-	const { viewCount, likeCount, dislikeCount, commentCount } = statistics;
+	const { viewCount, likeCount, dislikeCount } = statistics;
 	useEffect(() => {
 		dispatch(getChannelDetails(channelId));
 		if (accessToken) {

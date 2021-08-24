@@ -1,0 +1,57 @@
+@import 'root.scss';
+
+.channelHeader {
+	padding: 0.5rem 1rem;
+	margin: auto 0.5rem;
+	border-bottom: 1px solid $border-color;
+	&__details {
+		p {
+			color: #fff;
+			font-size: 1rem;
+			margin-bottom: 0px;
+		}
+	}
+	img {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+	&__button {
+		padding: 0.5rem;
+		margin: 0.5rem;
+
+		&__-subscribed {
+			background-color: rgb(88, 95, 99);
+			color: rgb(232, 230, 227);
+			letter-spacing: 0.5px;
+			border-color: rgb(102, 94, 83);
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@media (max-width: $break-point-medium) {
+	.channelHeader {
+		padding: 0.5rem 0px;
+		img {
+			width: 45px;
+			height: 45px;
+		}
+		&__details {
+			font-size: 0.6rem;
+			p {
+				@include line-clamp(1);
+				font-size: 0.8rem;
+			}
+		}
+		&__button {
+			padding: 0.4rem;
+			margin: 0.3rem;
+
+			font-weight: normal;
+			font-size: 0.5rem;
+		}
+	}
+}

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPopularVideos, getVideosByCategory } from 'redux/actions/video';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import SkeletonVideo from 'components/skeleton/SkeletonVideo';
+import PageTitle from 'components/pageTitle/PageTitle';
 const Home = () => {
 	const dispatch = useDispatch();
 	const { videos, activeCategory, loading } = useSelector(
@@ -24,31 +25,33 @@ const Home = () => {
 		}
 	};
 	return (
-		<Container>
-			<CategoryBar />
-			<Row>
-				<InfiniteScroll
-					dataLength={videos.length}
-					// next={fetchData}
-					hasMore={true}
-					loader={
-						<div className='spinner-border text-danger d-block mx-auto'></div>
-					}
-					className='row'>
-					{!loading
-						? videos.map((video, index) => (
-								<Col lg={3} md={4} key={index}>
-									<Video video={video} />
-								</Col>
-						  ))
-						: [...Array(20)].map((video, index) => (
-								<Col lg={3} md={4} key={index}>
-									<SkeletonVideo />
-								</Col>
-						  ))}
-				</InfiniteScroll>
-			</Row>
-		</Container>
+		<PageTitle title='Youtube'>
+			<Container>
+				<CategoryBar />
+				<Row>
+					<InfiniteScroll
+						dataLength={videos.length}
+						// next={fetchData}
+						hasMore={true}
+						loader={
+							<div className='spinner-border text-danger d-block mx-auto'></div>
+						}
+						className='row'>
+						{!loading
+							? videos.map((video, index) => (
+									<Col lg={3} md={4} key={index}>
+										<Video video={video} />
+									</Col>
+							  ))
+							: [...Array(20)].map((video, index) => (
+									<Col lg={3} md={4} key={index}>
+										<SkeletonVideo />
+									</Col>
+							  ))}
+					</InfiniteScroll>
+				</Row>
+			</Container>
+		</PageTitle>
 	);
 };
 

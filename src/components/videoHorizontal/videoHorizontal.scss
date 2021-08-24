@@ -12,7 +12,10 @@
 	}
 	&__thumbnail {
 		width: 100%;
-
+		&-channel {
+			width: 50%;
+			border-radius: 50%;
+		}
 		&-wrapper {
 			width: 100%;
 		}
@@ -38,6 +41,9 @@
 
 	&__details {
 		font-size: 0.7rem;
+		p {
+			@include line-clamp(3);
+		}
 	}
 	&__channel {
 		img {

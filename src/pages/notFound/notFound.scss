@@ -1,0 +1,41 @@
+@import 'root.scss';
+.notFound {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 90vh;
+
+	img {
+		&:first-of-type {
+			margin-bottom: 15px;
+		}
+	}
+	p {
+		text-align: center;
+	}
+	&__logo {
+		width: 120px;
+		height: 80px;
+		object-fit: cover;
+		display: block;
+		margin-right: 0.5rem;
+		cursor: pointer;
+	}
+}
+
+@media (max-width: $break-point-small) {
+	.notFound {
+		p {
+			font-size: 0.8rem;
+		}
+	}
+}
+
+@media (max-width: 320px) {
+	.subscription {
+		p {
+			font-size: 0.7rem;
+		}
+	}
+}

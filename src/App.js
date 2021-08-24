@@ -8,26 +8,11 @@ import 'app.scss';
 import privateRoutes from 'configs/routes/privateRoute';
 import publicRoutes from 'configs/routes/publicRoute';
 import { useSelector } from 'react-redux';
-
 const App = () => {
 	// const [isToggleSidebar, setIsToggleSidebar] = useState(false);
 	// const handleToggleSidebar = () => {
 	// 	setIsToggleSidebar(!isToggleSidebar);
 	// };
-	// return (
-	// 	<>
-	// 		<Header handleToggleSidebar={handleToggleSidebar} />
-	// 		<div className='app_container'>
-	// 			<Sidebar
-	// 				isToggleSidebar={isToggleSidebar}
-	// 				handleToggleSidebar={handleToggleSidebar}
-	// 			/>
-	// 			<Container fluid className='app_main'>
-	// 				<Home />
-	// 			</Container>
-	// 		</div>
-	// 	</>
-	// );
 	const { accessToken } = useSelector((state) => state.auth);
 	const routeListProtected = useRoutes(privateRoutes);
 	const routeListPublic = useRoutes(publicRoutes);

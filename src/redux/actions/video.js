@@ -8,6 +8,15 @@ import {
 	RELATED_VIDEO_REQUEST,
 	RELATED_VIDEO_SUCCESS,
 	RELATED_VIDEO_FAILED,
+	SEARCH_VIDEO_REQUEST,
+	SEARCH_VIDEO_SUCCESS,
+	SEARCH_VIDEO_FAILED,
+	SUBSCRIPTION_CHANNEL_REQUEST,
+	SUBSCRIPTION_CHANNEL_SUCCESS,
+	SUBSCRIPTION_CHANNEL_FAILED,
+	VIDEO_CHANNEL_REQUEST,
+	VIDEO_CHANNEL_SUCCESS,
+	VIDEO_CHANNEL_FAILED,
 } from '../actionType';
 import AXIOS from 'configs/api';
 
@@ -89,6 +98,72 @@ export const getRelatedVideos = (id) => async (dispatch) => {
 		dispatch({
 			type: RELATED_VIDEO_FAILED,
 			payload: error.response.data.message,
+		});
+	}
+};
+
+export const getVideoSearchResult = (text) => async (dispatch) => {
+	try {
+		dispatch({ type: SEARCH_VIDEO_REQUEST });
+		const { data } = await AXIOS('/search', {
+			params: {
+				part: 'snippet',
+				maxResults: 15,
+				q: text,
+				type: 'video,channel',
+			},
+		});
+		dispatch({ type: SEARCH_VIDEO_SUCCESS, payload: data.items });
+	} catch (error) {
+		dispatch({ type: SEARCH_VIDEO_FAILED, payload: error.message });
+	}
+};
+
+export const getChannelSubscription = () => async (dispatch, getState) => {
+	try {
+		dispatch({ type: SUBSCRIPTION_CHANNEL_REQUEST });
+		const { data } = await AXIOS('/subscriptions', {
+			params: { part: 'snippet,contentDetails', mine: true },
+			headers: {
+				Authorization: `Bearer ${getState().auth.accessToken}`,
+			},
+		});
+		dispatch({
+			type: SUBSCRIPTION_CHANNEL_SUCCESS,
+			payload: data.items,
+		});
+	} catch (error) {
+		dispatch({
+			type: SUBSCRIPTION_CHANNEL_FAILED,
+			payload: error.message,
+		});
+	}
+};
+
+export const getVideosByChannelId = (channelId) => async (dispatch) => {
+	try {
+		dispatch({ type: VIDEO_CHANNEL_REQUEST });
+		const { data } = await AXIOS('/channels', {
+			params: { part: 'contentDetails', id: channelId },
+		});
+		const uploadPlaylistId =
+			data.items[0].contentDetails.relatedPlaylists.uploads;
+		const { data: dataPlaylists } = await AXIOS('/playlistItems', {
+			params: {
+				part: 'snippet,contentDetails',
+				playlistId: uploadPlaylistId,
+				maxResults: 15,
+			},
+		});
+
+		dispatch({
+			type: VIDEO_CHANNEL_SUCCESS,
+			payload: dataPlaylists.items,
+		});
+	} catch (error) {
+		dispatch({
+			type: VIDEO_CHANNEL_FAILED,
+			payload: error.message,
 		});
 	}
 };

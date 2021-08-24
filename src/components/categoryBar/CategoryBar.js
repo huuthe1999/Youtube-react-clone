@@ -72,7 +72,7 @@ const CategoryBar = () => {
 				dragging={true}
 				hideArrows={true}
 				hideSingleArrow={true}
-				// onSelect={handleSelected}
+				onSelect={handleSelected}
 				scrollToSelected={false}
 				selected={activeItem}
 				ref={(el) => (el = menuItems)}

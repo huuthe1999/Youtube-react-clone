@@ -1,29 +1,28 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './search.scss';
+import './subscription.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideoSearchResult } from 'redux/actions/video';
+import { getChannelSubscription } from 'redux/actions/video';
 import { Container, Row, Col } from 'react-bootstrap';
 import VideoHorizontal from 'components/videoHorizontal/VideoHorizontal';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import PageTitle from 'components/pageTitle/PageTitle';
-const Search = () => {
-	const { query } = useParams();
+const Subscription = () => {
 	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getVideoSearchResult(query));
-	}, [dispatch, query]);
-	const { videos, loading } = useSelector((state) => state.searchVideos);
+	const { videos, loading } = useSelector(
+		(state) => state.subscriptionChannelVideos,
+	); // useEffect(() => {
+	// 	dispatch(getChannelSubscription());
+	// }, [dispatch]);
 
 	return (
-		<PageTitle title={`${query} - Youtube`}>
-			<Container>
-				{!loading
+		<PageTitle title='Subscriptions - Youtube'>
+			<Container fluid>
+				{loading
 					? videos?.map((video) => (
 							<VideoHorizontal
+								key={video.id}
 								video={video}
-								key={video.id.videoId}
-								searchScreen
+								subScreen
 							/>
 					  ))
 					: [...Array(10)].map((_, index) => (
@@ -61,4 +60,4 @@ const Search = () => {
 	);
 };
 
-export default Search;
+export default Subscription;
