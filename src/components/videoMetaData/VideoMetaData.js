@@ -37,19 +37,19 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 				<h6>{title}</h6>
 				<div className='d-flex justify-content-between align-items-center py-1'>
 					<span>
-						<RemoveRedEyeOutlinedIcon />
+						<RemoveRedEyeOutlinedIcon className='videoMetaData__title-icon' />
 						{' ' + numeral(viewCount).format('0.a')} views •&nbsp;
 						{moment(publishedAt).fromNow()}
 					</span>
 
 					<div className='videoMetaData__info'>
 						<span className='me-3'>
-							<ThumbUpAltOutlinedIcon />
+							<ThumbUpAltOutlinedIcon className='videoMetaData__title-icon' />
 							{numeral(likeCount).format('0.0a')}
 						</span>
 
 						<span className='me-3'>
-							<ThumbDownOutlinedIcon />
+							<ThumbDownOutlinedIcon className='videoMetaData__title-icon' />
 							{numeral(dislikeCount).format('0.a')}
 						</span>
 					</div>
@@ -75,16 +75,16 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
 				</div>
 				{!accessToken ? (
 					<PopOver>
-						<button className='rounded border-0 p-2 m-2'>
+						<button className='videoMetaData__button rounded border-0 p-2 m-2'>
 							SUBSCRIBE
 						</button>
 					</PopOver>
 				) : isSubscribed ? (
-					<button className='button-subscribed rounded border-0 p-2 m-2'>
+					<button className='videoMetaData__button button-subscribed rounded border-0 p-2 m-2'>
 						SUBSCRIBED
 					</button>
 				) : (
-					<button className='rounded border-0 p-2 m-2'>
+					<button className='videoMetaData__button rounded border-0 p-2 m-2'>
 						SUBSCRIBE
 					</button>
 				)}

@@ -39,7 +39,6 @@
 	&__detail {
 		display: flex;
 		align-items: center;
-
 		span {
 			&:first-of-type {
 				margin-right: 5px;
@@ -62,6 +61,14 @@
 
 		p {
 			margin-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: $break-point-medium) {
+	.video {
+		&__detail {
+			font-size: 0.8rem;
 		}
 	}
 }

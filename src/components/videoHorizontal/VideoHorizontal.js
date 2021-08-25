@@ -60,7 +60,7 @@ const VideoHorizontal = ({ video, searchScreen, subScreen }) => {
 		};
 
 		getChannelVideo();
-	}, [channelId]);
+	}, [_channelId]);
 
 	const handleVideoClick = () => {
 		isVideo

@@ -55,7 +55,7 @@ const CategoryBar = () => {
 	const handleSelected = (key) => {
 		setActiveItem(key);
 		if (key === 'All') {
-			dispatch(getPopularVideos());
+			dispatch(getPopularVideos(4));
 		} else {
 			dispatch(getVideosByCategory(key));
 		}

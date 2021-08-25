@@ -5,7 +5,7 @@ import Home from 'pages/home/Home';
 import WatchScreen from 'pages/watchScreen/WatchScreen';
 import Search from 'pages/search/Search';
 import Subscription from 'pages/UnAuthenticated/subscription/Subscription';
-import Library from 'pages/UnAuthenticated/library/Library';
+import Like from 'pages/UnAuthenticated/like/Like';
 import History from 'pages/UnAuthenticated/history/History';
 import Channel from 'pages/channel/Channel';
 import NotFound from 'pages/notFound/NotFound';
@@ -18,8 +18,8 @@ const publicRoutes = [
 			{ path: '/watch/:id', element: <WatchScreen /> },
 			{ path: '/search/:query', element: <Search /> },
 			{ path: '/feed/subscriptions', element: <Subscription /> },
-			{ path: '/feed/library', element: <Library /> },
-			{ path: '/feed/history', element: <History /> },
+			{ path: '/feed/like', element: <Like /> },
+			// { path: '/feed/history', element: <History /> },
 			{ path: '/channel/:channelId', element: <Channel /> },
 			{ path: '/404', element: <NotFound /> },
 			{ path: '*', element: <Navigate to='/404' /> },

@@ -83,3 +83,29 @@
 		}
 	}
 }
+
+@media (max-width: $break-point-small) {
+	.videoMetaData {
+		&__title {
+			&-icon {
+				font-size: 15px !important;
+			}
+			span {
+				font-size: 13px;
+			}
+		}
+
+		&__channel {
+			&:first-of-type {
+				@include line-clamp(1);
+			}
+			span {
+				font-size: 15px;
+			}
+		}
+
+		&__button {
+			font-size: 12px;
+		}
+	}
+}

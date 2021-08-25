@@ -68,7 +68,7 @@ const Video = ({ video, channelScreen }) => {
 			<div className='video__title'>{title}</div>
 			<div className='video__detail'>
 				<span>
-					<RemoveRedEyeOutlinedIcon />
+					<RemoveRedEyeOutlinedIcon fontSize='small' />
 					{' ' + numeral(countViews).format('0.a')} views
 				</span>
 				<span>{' • ' + moment(publishedAt).fromNow()}</span>

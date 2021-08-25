@@ -14,11 +14,11 @@ const History = () => {
 	};
 	return (
 		<PageTitle title='History - Youtube'>
-			<div className='library'>
-				<HistoryOutlinedIcon className='library__icon' />
+			<div className='history'>
+				<HistoryOutlinedIcon className='history__icon' />
 				<p>Keep track of what you watch</p>
-				<p>SWatch history isn't viewable when signed out.</p>
-				<div className='library__login-button'>
+				<p>Watch history isn't viewable when signed out.</p>
+				<div className='history__login-button'>
 					<button onClick={handleLogin}>
 						<AccountCircleOutlinedIcon className='icon' />
 						Sign In

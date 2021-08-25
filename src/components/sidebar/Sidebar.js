@@ -18,33 +18,25 @@ const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
 					<span>Home</span>
 				</li>
 			</NavLink>
-			<li>
-				<WhatshotIcon />
-				<span>Trending</span>
-			</li>
 			<NavLink to='/feed/subscriptions' activeClassName='activeLink'>
 				<li>
 					<SubscriptionsOutlinedIcon />
 					<span>Subscription</span>
 				</li>
 			</NavLink>
-			<li>
-				<ThumbUpOutlinedIcon />
-				<span>Liked Videos</span>
-			</li>
-			<hr />
-			<NavLink to='/feed/library' activeClassName='activeLink'>
+			<NavLink to='/feed/like' activeClassName='activeLink'>
 				<li>
-					<VideoLibraryOutlinedIcon />
-					<span>Library</span>
+					<ThumbUpOutlinedIcon />
+					<span>Liked Videos</span>
 				</li>
 			</NavLink>
-			<NavLink to='/feed/history' activeClassName='activeLink'>
+			{/* <hr /> */}
+			{/* <NavLink to='/feed/history' activeClassName='activeLink'>
 				<li>
 					<HistoryOutlinedIcon />
 					<span>History</span>
 				</li>
-			</NavLink>
+			</NavLink> */}
 			<hr />
 		</nav>
 	);

@@ -15,8 +15,8 @@
 		text-align: center;
 	}
 	&__logo {
-		width: 120px;
-		height: 80px;
+		width: 200px;
+		height: 100px;
 		object-fit: cover;
 		display: block;
 		margin-right: 0.5rem;
@@ -24,18 +24,18 @@
 	}
 }
 
-@media (max-width: $break-point-small) {
+@media (max-width: $break-point-medium) {
 	.notFound {
-		p {
-			font-size: 0.8rem;
+		&__logo {
+			margin-bottom: 0 !important;
 		}
 	}
 }
 
-@media (max-width: 320px) {
-	.subscription {
-		p {
-			font-size: 0.7rem;
-		}
-	}
-}
+// @media (max-width: 320px) {
+// 	.subscription {
+// 		p {
+// 			font-size: 0.7rem;
+// 		}
+// 	}
+// }

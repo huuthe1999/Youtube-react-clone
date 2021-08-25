@@ -1,5 +1,5 @@
 import React from 'react';
-import './library.scss';
+import './like.scss';
 // Icon
 import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { login } from 'redux/actions/auth';
 import PageTitle from 'components/pageTitle/PageTitle';
 
-const Library = () => {
+const Like = () => {
 	const dispatch = useDispatch();
 	const handleLogin = () => {
 		dispatch(login());
@@ -29,4 +29,4 @@ const Library = () => {
 	);
 };
 
-export default Library;
+export default Like;

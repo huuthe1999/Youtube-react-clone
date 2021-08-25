@@ -46,7 +46,7 @@ const Channel = () => {
 					</button>
 				)}
 			</div>
-			<Container>
+			<Container fluid>
 				<Row>
 					{!loading
 						? videos?.map((video) => (

@@ -36,7 +36,7 @@ const Header = ({ handleToggleSidebar }) => {
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'
-					placeholder='Search ....'
+					placeholder='Search'
 					value={text}
 					onChange={handleChange}
 				/>

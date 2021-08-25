@@ -1,34 +1,25 @@
 import React, { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import CategoryBar from 'components/categoryBar/CategoryBar';
-import Video from 'components/video/Video';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPopularVideos, getVideosByCategory } from 'redux/actions/video';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import SkeletonVideo from 'components/skeleton/SkeletonVideo';
+import { getLikedVideos } from 'redux/actions/video';
+import { Container, Row, Col } from 'react-bootstrap';
 import PageTitle from 'components/pageTitle/PageTitle';
-
-const Home = () => {
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Video from 'components/video/Video';
+import SkeletonVideo from 'components/skeleton/SkeletonVideo';
+const Like = () => {
 	const dispatch = useDispatch();
-	const { videos, activeCategory, loading } = useSelector(
-		(state) => state.homeVideos,
-	);
-
+	const { videos, loading } = useSelector((state) => state.likedVideos);
 	useEffect(() => {
-		dispatch(getPopularVideos());
+		dispatch(getLikedVideos());
 	}, [dispatch]);
 
 	const fetchData = () => {
-		if (activeCategory === 'All') {
-			dispatch(getPopularVideos(4));
-		} else {
-			dispatch(getVideosByCategory(activeCategory, 4));
-		}
+		dispatch(getLikedVideos(4));
 	};
 	return (
-		<PageTitle title='Youtube'>
+		<PageTitle title={`Liked Videos - Youtube`}>
 			<Container>
-				<CategoryBar />
 				<Row>
 					<InfiniteScroll
 						dataLength={videos.length}
@@ -46,7 +37,7 @@ const Home = () => {
 										<Video video={video} />
 									</Col>
 							  ))
-							: [...Array(20)].map((_, index) => (
+							: [...Array(12)].map((_, index) => (
 									<Col lg={3} md={4} key={index}>
 										<SkeletonVideo />
 									</Col>
@@ -58,4 +49,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Like;
