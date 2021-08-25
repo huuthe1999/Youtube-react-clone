@@ -1,6 +1,12 @@
+@import 'root.scss';
 .watchScreen__player {
 	height: 60vh;
 	border-color: #353946;
 	width: 100%;
 	margin-bottom: 1rem;
+}
+@media (max-width: $break-point-small) {
+	.watchScreen__player {
+		height: 35vh;
+	}
 }
