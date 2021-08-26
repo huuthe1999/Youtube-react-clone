@@ -1,12 +1,12 @@
 import './sidebar.scss';
 // Icon
 import SubscriptionsOutlinedIcon from '@material-ui/icons/SubscriptionsOutlined';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
+// import WhatshotIcon from '@material-ui/icons/Whatshot';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
+// import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
-import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
+// import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import { useDispatch } from 'react-redux';
 import { log_out } from 'redux/actions/auth';
 import { NavLink } from 'react-router-dom';

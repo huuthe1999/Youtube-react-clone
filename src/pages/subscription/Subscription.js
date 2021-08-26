@@ -65,7 +65,7 @@ const Subscription = () => {
 									subScreen
 								/>
 						  ))
-						: [...Array(10)].map((_, index) => (
+						: [...Array(8)].map((_, index) => (
 								<Row className='p-1' key={index}>
 									<SkeletonTheme
 										color='#343a40'

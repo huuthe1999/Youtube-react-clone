@@ -6,8 +6,8 @@ import Comment from 'components/comment/Comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCommentById, addComment } from 'redux/actions/comment';
 // Popover
-import PopOver from 'components/popover/PopOver';
-import { useNavigate } from 'react-router-dom';
+// import PopOver from 'components/popover/PopOver';
+// import { useNavigate } from 'react-router-dom';
 // Actions
 import { login } from 'redux/actions/auth';
 

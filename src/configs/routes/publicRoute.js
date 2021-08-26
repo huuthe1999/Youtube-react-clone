@@ -6,7 +6,7 @@ import WatchScreen from 'pages/watchScreen/WatchScreen';
 import Search from 'pages/search/Search';
 import Subscription from 'pages/UnAuthenticated/subscription/Subscription';
 import Like from 'pages/UnAuthenticated/like/Like';
-import History from 'pages/UnAuthenticated/history/History';
+// import History from 'pages/UnAuthenticated/history/History';
 import Channel from 'pages/channel/Channel';
 import NotFound from 'pages/notFound/NotFound';
 const publicRoutes = [

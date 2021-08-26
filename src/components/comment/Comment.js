@@ -1,7 +1,7 @@
 import React from 'react';
 import './comment.scss';
 import moment from 'moment';
-import avatar from 'assets/images/avatar.png';
+// import avatar from 'assets/images/avatar.png';
 
 const Comment = ({ comment }) => {
 	const {

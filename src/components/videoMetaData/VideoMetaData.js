@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import './videoMetaData.scss';
 // Icon
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';

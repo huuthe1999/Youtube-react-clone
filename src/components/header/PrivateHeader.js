@@ -1,15 +1,13 @@
 import './header.scss';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// Actions
-import { login } from 'redux/actions/auth';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 // Icon
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { MdNotifications, MdApps } from 'react-icons/md';
 // Image
 import logo from 'assets/images/logo.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const PrivateHeader = ({ handleToggleSidebar }) => {
 	const navigate = useNavigate();
@@ -30,7 +28,9 @@ const PrivateHeader = ({ handleToggleSidebar }) => {
 				size={26}
 				onClick={() => handleToggleSidebar()}
 			/>
-			<img src={logo} alt='' className='header__logo' />
+			<Link end to={'/'}>
+				<img src={logo} alt='' className='header__logo' />
+			</Link>
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'

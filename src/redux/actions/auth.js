@@ -40,4 +40,5 @@ export const log_out = () => async (dispatch) => {
 		type: LOG_OUT,
 	});
 	sessionStorage.removeItem('accessToken');
+	sessionStorage.removeItem('userProfile');
 };

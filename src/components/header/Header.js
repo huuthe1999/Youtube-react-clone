@@ -9,7 +9,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 // Image
 import logo from 'assets/images/logo.png';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Header = ({ handleToggleSidebar }) => {
 	const dispatch = useDispatch();
@@ -32,7 +32,9 @@ const Header = ({ handleToggleSidebar }) => {
 				size={26}
 				onClick={() => handleToggleSidebar()}
 			/>
-			<img src={logo} alt='' className='header__logo' />
+			<Link to={'/'}>
+				<img src={logo} alt='' className='header__logo' />
+			</Link>
 			<form onSubmit={handleSubmit}>
 				<input
 					type='text'

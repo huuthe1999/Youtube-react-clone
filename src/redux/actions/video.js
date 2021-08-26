@@ -44,7 +44,14 @@ export const getPopularVideos = (size) => async (dispatch, getState) => {
 			},
 		});
 	} catch (error) {
-		dispatch({ type: HOME_VIDEO_FAILED, payload: error.message });
+		dispatch({
+			type: HOME_VIDEO_FAILED,
+			payload: {
+				error: error.message,
+				isError: true,
+				index: size || 8,
+			},
+		});
 	}
 };
 

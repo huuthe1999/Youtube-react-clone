@@ -2,11 +2,11 @@ import './sidebar.scss';
 import { NavLink } from 'react-router-dom';
 // Icon
 import SubscriptionsOutlinedIcon from '@material-ui/icons/SubscriptionsOutlined';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
+// import WhatshotIcon from '@material-ui/icons/Whatshot';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
+// import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
-import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
+// import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 const Sidebar = ({ isToggleSidebar, handleToggleSidebar }) => {
 	return (
 		<nav

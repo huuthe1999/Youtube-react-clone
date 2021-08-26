@@ -6,7 +6,7 @@ import Home from 'pages/home/Home';
 import WatchScreen from 'pages/watchScreen/WatchScreen';
 import Subscription from 'pages/subscription/Subscription';
 import Like from 'pages/like/Like';
-import History from 'pages/history/History';
+// import History from 'pages/history/History';
 import Channel from 'pages/channel/Channel';
 import NotFound from 'pages/notFound/NotFound';
 const privateRoutes = [

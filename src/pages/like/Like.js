@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLikedVideos } from 'redux/actions/video';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -37,7 +36,7 @@ const Like = () => {
 										<Video video={video} />
 									</Col>
 							  ))
-							: [...Array(12)].map((_, index) => (
+							: [...Array(8)].map((_, index) => (
 									<Col lg={3} md={4} key={index}>
 										<SkeletonVideo />
 									</Col>

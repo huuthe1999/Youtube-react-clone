@@ -8,7 +8,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Video from 'components/video/Video';
 import SkeletonVideo from 'components/skeleton/SkeletonVideo';
 import numeral from 'numeral';
-import { getChannelDetails } from 'redux/actions/channel';
+import {
+	getChannelDetails,
+	checkSubscriptionChannel,
+} from 'redux/actions/channel';
 const Channel = () => {
 	const { channelId } = useParams();
 	const { loading, videos } = useSelector((state) => state.channelVideos);
@@ -20,6 +23,7 @@ const Channel = () => {
 	useEffect(() => {
 		dispatch(getVideosByChannelId(channelId));
 		dispatch(getChannelDetails(channelId));
+		dispatch(checkSubscriptionChannel(channelId));
 	}, [dispatch, channelId]);
 	return (
 		<PageTitle title={!loading ? snippet?.title : ''}>
@@ -54,7 +58,7 @@ const Channel = () => {
 									<Video video={video} channelScreen />
 								</Col>
 						  ))
-						: [...Array(20)].map((video, index) => (
+						: [...Array(8)].map((video, index) => (
 								<Col lg={3} md={4} key={index}>
 									<SkeletonVideo />
 								</Col>
