@@ -58,7 +58,7 @@ const Channel = () => {
 									<Video video={video} channelScreen />
 								</Col>
 						  ))
-						: [...Array(8)].map((video, index) => (
+						: [...Array(4)].map((video, index) => (
 								<Col lg={3} md={4} key={index}>
 									<SkeletonVideo />
 								</Col>

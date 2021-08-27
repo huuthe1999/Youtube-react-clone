@@ -20,7 +20,7 @@ const Home = () => {
 
 	const fetchData = () => {
 		if (activeCategory === 'All') {
-			dispatch(getPopularVideos(4));
+			dispatch(getPopularVideos());
 		} else {
 			dispatch(getVideosByCategory(activeCategory, 4));
 		}
@@ -46,7 +46,7 @@ const Home = () => {
 										<Video video={video} />
 									</Col>
 							  ))
-							: [...Array(8)].map((_, index) => (
+							: [...Array(4)].map((_, index) => (
 									<Col lg={3} md={4} key={index}>
 										<SkeletonVideo />
 									</Col>

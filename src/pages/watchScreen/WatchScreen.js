@@ -55,7 +55,7 @@ const WatchScreen = () => {
 										key={video.id.videoId}
 									/>
 								))
-						: [...Array(8)].map((video, index) => (
+						: [...Array(4)].map((video, index) => (
 								<Row className='p-1' key={index}>
 									<SkeletonTheme
 										color='#343a40'

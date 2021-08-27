@@ -26,7 +26,7 @@ const Search = () => {
 					dataLength={videos.length}
 					next={fetchData}
 					hasMore={true}
-					loader={[...Array(8)].map((_, index) => (
+					loader={[...Array(4)].map((_, index) => (
 						<Row className='p-1' key={index}>
 							<SkeletonTheme
 								color='#343a40'
@@ -65,7 +65,7 @@ const Search = () => {
 									searchScreen
 								/>
 						  ))
-						: [...Array(8)].map((_, index) => (
+						: [...Array(4)].map((_, index) => (
 								<Row className='p-1' key={index}>
 									<SkeletonTheme
 										color='#343a40'
